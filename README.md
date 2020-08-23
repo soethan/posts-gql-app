@@ -1,3 +1,9 @@
+https://create-react-app.dev/docs/adding-typescript
+https://www.apollographql.com/docs/apollo-server/testing/mocking/
+
+npm i -g nodemon
+nodemon server.js
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
