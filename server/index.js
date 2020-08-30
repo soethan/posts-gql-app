@@ -1,5 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
-const { users } = require('./mockData');
+const { users, posts } = require('./mockData');
 
 const typeDefs = gql`
   type User {
@@ -13,11 +13,18 @@ const typeDefs = gql`
     id: ID!
     desc: String
     postedBy: String
+    comments: [Comment]
+  }
+
+  type Comment {
+    id: ID!
+    desc: String
   }
 
   type Query {
     getUserById(id: ID!): User
     getUsers: [User]
+    getPosts: [Post]
   }
 `;
 
@@ -29,6 +36,10 @@ const resolvers = {
 
     getUsers() {
       return users;
+    },
+
+    getPosts() {
+      return posts;
     }
   }
 }

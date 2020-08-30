@@ -17,28 +17,38 @@ const posts = [
   {
     id: '1',
     desc: 'post 1',
-    postedBy: '1'
+    postedBy: '1',
+    comments: [
+      {
+        id: 1,
+        desc: 'post 1 is great!'
+      },
+      {
+        id: 2,
+        desc: 'post 1 ... Keep it up!'
+      }
+    ]
   },
   {
     id: '2',
-    desc: 'post 1',
+    desc: 'post 2',
     postedBy: '1'
   },
   {
     id: '3',
-    desc: 'post 1',
+    desc: 'post 3',
     postedBy: '1'
   },
   {
     id: '4',
-    desc: 'post 1',
+    desc: 'post 4',
     postedBy: '2'
   },
   {
     id: '5',
-    desc: 'post 1',
+    desc: 'post 5',
     postedBy: '2'
   }
-]
+];
 
 module.exports = { users, posts };
