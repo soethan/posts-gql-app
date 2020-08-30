@@ -26,6 +26,15 @@ const typeDefs = gql`
     getUsers: [User]
     getPosts: [Post]
   }
+
+  input PostInput {
+    desc: String!,
+    postedBy: String!
+  }
+
+  type Mutation {
+    addPost(post: PostInput!): Post!
+  }
 `;
 
 const resolvers = {
@@ -40,6 +49,16 @@ const resolvers = {
 
     getPosts() {
       return posts;
+    }
+  },
+  Mutation: {
+    addPost(_, { post }) {
+      const newPost = {
+        id: posts.length,
+        ...post
+      };
+      posts.push(newPost);
+      return newPost;
     }
   }
 }
