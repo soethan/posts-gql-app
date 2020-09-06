@@ -1,4 +1,4 @@
-const { users, posts } = require('../mockData');
+const { posts } = require('../mockData');
 
 module.exports = {
   addPost(_, { post }) {

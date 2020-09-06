@@ -1,8 +1,8 @@
 const { ApolloServer } = require('apollo-server');
-const { users, posts } = require('./mockData');
 const typeDefs = require('./graphql/schema');
 const queryResolvers = require('./graphql/queryResolvers');
 const mutationResolvers = require('./graphql/mutationResolvers');
+const PORT = 9000;
 
 const resolvers = {
   Query: queryResolvers,
@@ -15,6 +15,6 @@ const server = new ApolloServer({
   // mocks: true,
 });
 
-server.listen({ port: 9000 }).then(({ url }) => {
-  console.log(`🚀 Server at ${url}`)
+server.listen({ port: PORT }).then(({ url }) => {
+  console.log(`Running GraphQL Server at ${url}`)
 });
