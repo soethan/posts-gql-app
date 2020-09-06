@@ -21,11 +21,13 @@ const posts = [
     comments: [
       {
         id: 1,
-        desc: 'post 1 is great!'
+        desc: 'post 1 is great!',
+        commentedBy: '1',
       },
       {
         id: 2,
-        desc: 'post 1 ... Keep it up!'
+        desc: 'post 1 ... Keep it up!',
+        commentedBy: '2',
       }
     ]
   },

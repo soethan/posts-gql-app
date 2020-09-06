@@ -19,6 +19,7 @@ const typeDefs = gql`
   type Comment {
     id: ID!
     desc: String
+    commentedBy: ID!
   }
 
   type Query {
@@ -28,12 +29,19 @@ const typeDefs = gql`
   }
 
   input PostInput {
-    desc: String!,
-    postedBy: String!
+    desc: String!
+    postedBy: ID!
+  }
+
+  input CommentInput {
+    desc: String!
+    postId: ID!
+    commentedBy: ID!
   }
 
   type Mutation {
     addPost(post: PostInput!): Post!
+    addComment(comment: CommentInput!): Comment!
   }
 `;
 
@@ -55,10 +63,25 @@ const resolvers = {
     addPost(_, { post }) {
       const newPost = {
         id: posts.length,
-        ...post
+        ...post,
       };
       posts.push(newPost);
       return newPost;
+    },
+
+    addComment(_, { comment }) {
+      const post = posts.find(p => p.id === comment.postId);
+      if (post) {
+        post.comments = post.comments || [];
+        const newComment = {
+          id: post.comments.length + 1,
+          desc: comment.desc,
+          commentedBy: comment.commentedBy,
+        };
+        post.comments.push(newComment);
+        return newComment;
+      }
+      return {};
     }
   }
 }
